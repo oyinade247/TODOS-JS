@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme">
+  <main class="todo-app">
+    <div class="header">
+        <h1 class="todo">Todo App</h1>
+        <button id="theme-toggle">🌙</button>
+    </div>
+
+        <input class="todo-input" type="todo task" id="todo-input" placeholder="enter task...">
+        <button class="add-button" id="add-todo">Add</button>
+
+      <div class="todo-list">
+        <ul id="todo-list"></ul>
+      </div> 
+  </main>
+
+  <script>
+    const todoinput = document.getElementById("todo-input");
+    const addtodos = document.getElementById("add-todo");
+    const todolist = document.getElementById("todo-list");
+
+    addtodos.addEventListener('click', ()=>{
+        let text = todoinput.value.trim();
+        if(text){
+            const li = document.createElement("li");
+            li.classList.add("lists")
+            const del = document.createElement("button");
+            del.classList.add("deleted")
+            del.textContent= "delete";
+
+            del.addEventListener('click',()=>{
+                todolist.removeChild(li);
+            })
+            
+            li.textContent = text;
+            li.appendChild(del);
+
+            
+            
+
+            todolist.appendChild(li);
+            todoinput.value = "";
+            
+        }
+    })
+
+    const themetoggle = document.getElementById("theme-toggle");
+    const theme = document.querySelector(".theme");
+
+    themetoggle.addEventListener('click',()=>{
+       theme.classList.toggle("dark");
+    })
+  </script>
+</body>
+</html>
